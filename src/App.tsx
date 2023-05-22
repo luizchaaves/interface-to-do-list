@@ -1,16 +1,25 @@
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+
 import GlobalStyle from './styles/global';
 import Theme from './styles/theme';
 import DarkTHeme from './styles/darkTheme';
+import { Container } from './styles';
+
+import Menu from './components/Menu';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTHeme : Theme}>
-      app
-      <GlobalStyle />
+      <BrowserRouter>
+        <Container>
+          <Menu />
+        </Container>
+        <GlobalStyle />
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
