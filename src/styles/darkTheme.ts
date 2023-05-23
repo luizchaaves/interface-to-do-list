@@ -5,6 +5,7 @@ const DarkTheme: DefaultTheme = {
   color: {
     primary: Theme.color.secondary,
     secondary: Theme.color.primary,
+    white: Theme.color.white,
   },
   background: {
     primary: Theme.background.secondary,

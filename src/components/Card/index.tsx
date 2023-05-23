@@ -45,6 +45,7 @@ const Card = ({
         </Icon>
         <span>{quantity}</span>
       </Header>
+      <p>{title}</p>
     </Container>
   );
 };

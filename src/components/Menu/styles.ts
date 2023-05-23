@@ -9,7 +9,6 @@ export const Container = styled.div`
 
   @media (max-width: 600px) {
     width: 100vw;
-    box-shadow: none;
   }
 
   @media (min-width: 601px) and (max-width: 664px) {

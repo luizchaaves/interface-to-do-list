@@ -10,7 +10,7 @@ import Menu from './components/Menu';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTHeme : Theme}>

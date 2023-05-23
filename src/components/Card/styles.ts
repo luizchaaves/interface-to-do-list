@@ -23,7 +23,7 @@ export const Icon = styled.div<StyledProps>`
 export const Header = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
 
   span {
@@ -32,31 +32,30 @@ export const Header = styled.div`
 `;
 
 export const Container = styled.div<StyledProps>`
-  width: 100%
-  padding: .5rem;
+  width: 100%;
+  padding: 0.5rem;
   background: ${(props) => props.theme.background.primary.card};
   color: ${(props) => props.theme.color.primary};
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 
-  p{
-    font-weigh: 600;
+  p {
+    font-weight: 600;
   }
 
   &.active,
-  &:hover{
+  &:hover {
     background: ${({ background }) => background};
-    color: ${(props) => props.theme.color.secondary}
+    color: ${(props) => props.theme.color.white};
   }
 
-  &.active ${Icon},
-  &:hover ${Icon}{
+  &.active ${Icon}, &:hover ${Icon} {
     background: #fff;
   }
 
   &.active ${Icon} > svg,
-  &:hover ${Icon} > svg{
-    background: ${({ background }) => background};
+  &:hover ${Icon} > svg {
+    color: ${({ background }) => background};
   }
 `;
