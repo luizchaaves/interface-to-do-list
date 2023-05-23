@@ -22,7 +22,8 @@ export const Container = styled.div`
 
 export const ContainerLogo = styled.div`
   width: 100%;
-  box-shadow: 0px 1px 4px rgba(115, 115, 115, 0.75);
+  margin-bottom: 1.5rem;
+  box-shadow: ${(props) => props.theme.boxShadow.tertiary};
 `;
 
 export const Cards = styled.div`

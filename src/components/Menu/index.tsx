@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IconType } from 'react-icons';
-import { MdEditNote, MdCheck, MdClose, MdInbox } from 'react-icons/md';
+import { MdEditNote, MdCheck, MdFolderOpen, MdInbox } from 'react-icons/md';
 import theme from '../../styles/theme';
 import Card from '../Card';
 import { Cards, Container, ContainerLogo } from './styles';
+import Logo from '../Logo';
 
 type card = {
   id: number;
@@ -39,7 +40,7 @@ const Menu = () => {
     {
       id: 3,
       title: 'Abertos',
-      icon: MdClose,
+      icon: MdFolderOpen,
       quantity: 0,
       background: theme.background.cards.red,
       route: '/openedTasks',
@@ -65,7 +66,9 @@ const Menu = () => {
 
   return (
     <Container>
-      <ContainerLogo>logo</ContainerLogo>
+      <ContainerLogo>
+        <Logo showBackButton={false} />
+      </ContainerLogo>
       <Cards>
         {cards.map((card) => (
           <Card

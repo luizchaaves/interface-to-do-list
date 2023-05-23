@@ -27,6 +27,8 @@ const theme = {
   boxShadow: {
     primary: '2px -1px 4px rgba(115,115,115,0.75)',
     secondary: '2px -1px 4px rgba(0,16,27,0.75)',
+    tertiary: '0px 1px 4px rgba(115, 115, 115, 0.75)',
+    quaternary: '0px 1px 4px rgba(0, 16, 27, 0.75)',
   },
   gradient: {
     primary:

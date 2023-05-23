@@ -15,6 +15,8 @@ const DarkTheme: DefaultTheme = {
   boxShadow: {
     primary: Theme.boxShadow.secondary,
     secondary: Theme.boxShadow.primary,
+    tertiary: Theme.boxShadow.quaternary,
+    quaternary: Theme.boxShadow.tertiary,
   },
   gradient: {
     primary: Theme.gradient.secondary,
