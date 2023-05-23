@@ -9,6 +9,7 @@ const Register = ({ mobile }: Props) => {
   return (
     <Container>
       <Header mobile={mobile} title="Cadastrar" />
+      <p>teste</p>
     </Container>
   );
 };

@@ -11,7 +11,7 @@ const Header = ({ mobile, title }: Props) => {
   return (
     <Container>
       {mobile && (
-        <ContainerLogo>
+        <ContainerLogo mobile={mobile}>
           <Logo showBackButton={true} />
         </ContainerLogo>
       )}

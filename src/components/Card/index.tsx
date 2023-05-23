@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons';
 import { useNavigate } from 'react-router-dom';
-import { Container, Header, Icon } from './styles';
+import { Container, Header, Icon, Span } from './styles';
 
 type Props = {
   id: number;
@@ -43,9 +43,11 @@ const Card = ({
         <Icon background={background}>
           <IconComponent />
         </Icon>
-        <span>{quantity}</span>
+        <Span fontWeight="700">{quantity}</Span>
       </Header>
-      <p>{title}</p>
+      <Span className="teste" fontWeight="600">
+        {title}
+      </Span>
     </Container>
   );
 };

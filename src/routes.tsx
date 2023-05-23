@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Menu from './components/Menu';
 import AllTasks from './pages/AllTasks';
 import FinishedTasks from './pages/FinishedTasks';
+import Homepage from './pages/Homepage';
 import OpenedTasks from './pages/OpenedTasks';
 import Register from './pages/Register';
 
@@ -13,7 +14,7 @@ const routes = ({ mobile }: Props) => {
   return (
     <Routes>
       {mobile && <Route path="/" element={<Menu />} />}
-      {/* {!mobile && <Route path='/' element={<Home/>}/>} */}
+      {!mobile && <Route path="/" element={<Homepage />} />}
       <Route path="/registerTask" element={<Register mobile={mobile} />} />
       <Route path="/allTasks" element={<AllTasks mobile={mobile} />} />
       <Route path="/openedTasks" element={<OpenedTasks mobile={mobile} />} />
