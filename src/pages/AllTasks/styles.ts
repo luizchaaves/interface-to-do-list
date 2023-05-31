@@ -6,4 +6,11 @@ export const Container = styled.div`
   z-index: ${(props) => props.theme.zIndex.page};
   color: ${(props) => props.theme.color.primary};
   height: 100vh;
+  overflow: hidden;
+`;
+
+export const Content = styled.div`
+  padding: 0rem 1rem;
+  height: calc(100% - 104px);
+  overflow-y: auto;
 `;
