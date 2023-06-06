@@ -11,7 +11,7 @@ type card = {
   id: number;
   title: string;
   icon: IconType;
-  quantity: number;
+  quantity?: number;
   background: string;
   route: string;
 };
@@ -25,7 +25,6 @@ const Menu = () => {
       id: 1,
       title: 'Cadastrar',
       icon: MdEditNote,
-      quantity: 0,
       background: theme.background.cards.yellow,
       route: '/registerTask',
     },
@@ -33,7 +32,7 @@ const Menu = () => {
       id: 2,
       title: 'Todos',
       icon: MdInbox,
-      quantity: 0,
+      quantity: 1,
       background: theme.background.cards.orange,
       route: '/allTasks',
     },

@@ -6,7 +6,7 @@ type Props = {
   id: number;
   title: string;
   icon: IconType;
-  quantity: number;
+  quantity?: number;
   background: string;
   route: string;
   cardOnClick?: Function;
@@ -43,7 +43,7 @@ const Card = ({
         <Icon background={background}>
           <IconComponent />
         </Icon>
-        <Span fontWeight="700">{quantity}</Span>
+        {quantity !== undefined && <Span fontWeight="700">{quantity}</Span>}
       </Header>
       <Span className="teste" fontWeight="600">
         {title}

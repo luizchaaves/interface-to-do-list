@@ -15,14 +15,13 @@ export const Container = styled.div<StyledProps>`
 
   &.active,
   &:hover {
-    transition: 0.4s;
     background: ${({ background }) => background};
     color: ${(props) => props.theme.color.white};
   }
 
   &.active svg,
   &:hover svg {
-    transition: 0.4s;
+    transition: 0.6s;
     color: ${({ background }) => background};
     transform: scale(1.2);
   }
