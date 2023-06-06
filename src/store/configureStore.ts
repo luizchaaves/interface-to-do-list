@@ -4,9 +4,11 @@ import {
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
 import tasks from './tasks';
+import openedTasks from './openedTasks';
+import finishedTasks from './finishedTasks';
 
 const middleware = [...getDefaultMiddleware()];
-const reducer = combineReducers({ tasks });
+const reducer = combineReducers({ tasks, openedTasks, finishedTasks });
 const store = configureStore({ reducer, middleware });
 
 export default store;
