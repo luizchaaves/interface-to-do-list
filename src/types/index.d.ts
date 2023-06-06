@@ -3,14 +3,23 @@ declare global {
     title: string;
     description: string;
   }
-
-  export interface ResponseApi {
+  export interface DefaultState {
+    loading: boolean;
+    data: ResponseData;
+    error: string;
+  }
+  export interface Task {
+    created_at: string;
+    description: string;
+    finished: boolean;
     id: number;
     title: string;
-    description: string;
-    created_at: string;
     updated_at: string;
-    finished: boolean;
+  }
+  export interface ResponseData {
+    length?: number;
+    tasks?: Task[];
+    message?: string;
   }
 }
 

@@ -5,47 +5,30 @@ import { useAppSelector } from '../../hooks/hooks';
 import { tasksGet } from '../../store/tasks';
 import Header from '../../components/Header';
 import { Container, Content } from './styles';
+import List from '../../components/List';
 
 type Mobile = boolean;
-interface State {
-  loading: boolean;
-  data: Data;
-  error: string;
-}
-
-interface Data {
-  length: number;
-  tasks: Task[];
-}
-
-interface Task {
-  created_at: string;
-  description: string;
-  finished: boolean;
-  id: number;
-  title: string;
-  updated_at: string;
-}
 
 const AllTasks = ({ mobile }: { mobile: Mobile }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { data } = useAppSelector((state: RootState) => state.tasks) as State;
+  const { data } = useAppSelector(
+    (state: RootState) => state.tasks
+  ) as DefaultState;
   const { tasks } = data;
 
   useEffect(() => {
     dispatch<any>(tasksGet(undefined));
   }, [dispatch]);
 
+  function loadTasks() {
+    dispatch<any>(tasksGet(undefined));
+  }
+
   return (
     <Container>
       <Header mobile={mobile} title="Todos" />
       <Content>
-        {tasks &&
-          tasks.map((task) => (
-            <div key={task.id}>
-              {task.title} | {task.description}
-            </div>
-          ))}
+        {tasks && <List mobile={mobile} list={tasks} loadTasks={loadTasks} />}
       </Content>
     </Container>
   );

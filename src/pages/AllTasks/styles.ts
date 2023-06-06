@@ -13,4 +13,8 @@ export const Content = styled.div`
   padding: 0rem 1rem;
   height: calc(100% - 104px);
   overflow-y: auto;
+
+  @media (max-width: 600px) {
+    height: calc(100% - 192px);
+  }
 `;
