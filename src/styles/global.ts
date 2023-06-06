@@ -7,8 +7,9 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body{
+  body, input, textarea{
     font-family: 'Inter', sans-serif;
+    font-size: 1rem;
   }
 
   html, body{

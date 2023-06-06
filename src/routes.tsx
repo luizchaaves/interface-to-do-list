@@ -16,6 +16,7 @@ const routes = ({ mobile }: Props) => {
       {mobile && <Route path="/" element={<Menu />} />}
       {!mobile && <Route path="/" element={<Homepage />} />}
       <Route path="/registerTask" element={<Register mobile={mobile} />} />
+      <Route path="/registerTask/:id" element={<Register mobile={mobile} />} />
       <Route path="/allTasks" element={<AllTasks mobile={mobile} />} />
       <Route path="/openedTasks" element={<OpenedTasks mobile={mobile} />} />
       <Route

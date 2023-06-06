@@ -16,7 +16,7 @@ function App() {
   const mobile = useMedia('(max-width: 600px)');
 
   useEffect(() => {
-    setIsDarkTheme(true);
+    setIsDarkTheme(false);
   }, []);
 
   return (

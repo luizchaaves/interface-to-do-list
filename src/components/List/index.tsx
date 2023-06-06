@@ -50,7 +50,7 @@ const List = ({
     if (response.status === 200 && response.ok) loadTasks();
   };
   const handleButtonEdit = (id: number) => {
-    navigate(`/cadastrar/${id}`);
+    navigate(`/registerTask/${id}`);
   };
   const handleButtonDelete = async (id: number) => {
     const { url, options } = REMOVE_TASK(id);
@@ -66,7 +66,7 @@ const List = ({
           borderColor={
             task.finished
               ? theme.background.cards.green
-              : theme.background.cards.yellow
+              : theme.background.cards.orange
           }
         >
           <Text>{task.title}</Text>

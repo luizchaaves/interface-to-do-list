@@ -57,7 +57,10 @@ const Menu = () => {
 
   useEffect(() => {
     if (pathname === '/') setActiveMenu('home');
-    else setActiveMenu(pathname.replace('/', ''));
+    else {
+      const menuActive = pathname.split('/');
+      setActiveMenu(menuActive[1].toString());
+    }
   }, [pathname, setActiveMenu]);
 
   function handleMenuClick(route: string) {
