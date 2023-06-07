@@ -25,3 +25,9 @@ export const Image = styled.div`
   color: ${(props) => props.theme.color.primary};
   cursor: pointer;
 `;
+
+export const ContainerTheme = styled.div`
+  display: flex;
+  position: absolute;
+  right: 16px;
+`;

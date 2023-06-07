@@ -7,6 +7,7 @@ import tasks from './tasks';
 import openedTasks from './openedTasks';
 import finishedTasks from './finishedTasks';
 import coutTasks from './coutTasks';
+import theme from './theme';
 
 const middleware = [...getDefaultMiddleware()];
 const reducer = combineReducers({
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   openedTasks,
   finishedTasks,
   coutTasks,
+  theme,
 });
 const store = configureStore({ reducer, middleware });
 

@@ -4,12 +4,13 @@ import { IconType } from 'react-icons';
 import { MdEditNote, MdCheck, MdFolderOpen, MdInbox } from 'react-icons/md';
 import theme from '../../styles/theme';
 import Card from '../Card';
-import { Cards, Container, ContainerLogo } from './styles';
+import { Cards, Container, ContainerLogo, ContainerTheme } from './styles';
 import Logo from '../Logo';
 import { countTasksGet } from '../../store/coutTasks';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/configureStore';
 import { useAppSelector } from '../../hooks/hooks';
+import Theme from '../Theme';
 
 type card = {
   id: number;
@@ -20,7 +21,9 @@ type card = {
   route: string;
 };
 
-const Menu = () => {
+type Mobile = boolean;
+
+const Menu = ({ mobile }: { mobile: Mobile }) => {
   const [activeMenu, setActiveMenu] = useState<string>('');
   let { pathname } = useLocation();
   const dispatch = useDispatch<AppDispatch>();
@@ -81,7 +84,7 @@ const Menu = () => {
   return (
     <Container>
       <ContainerLogo>
-        <Logo showBackButton={false} />
+        <Logo showBackButton={false} mobile={mobile} />
       </ContainerLogo>
       <Cards>
         {cards.map((card) => (
@@ -93,6 +96,7 @@ const Menu = () => {
           />
         ))}
       </Cards>
+      <ContainerTheme>{!mobile && <Theme />}</ContainerTheme>
     </Container>
   );
 };

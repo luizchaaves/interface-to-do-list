@@ -6,6 +6,7 @@ export const Container = styled.div`
   height: 100vh;
   z-index: ${(props) => props.theme.zIndex.menu};
   box-shadow: ${(props) => props.theme.boxShadow.primary};
+  position: relative;
 
   @media (max-width: 600px) {
     width: 100vw;
@@ -38,4 +39,11 @@ export const Cards = styled.div`
     gap: 1rem;
     padding: 0.5rem;
   }
+`;
+
+export const ContainerTheme = styled.div`
+  position: absolute;
+  display: flex;
+  bottom: 12px;
+  right: 16px;
 `;

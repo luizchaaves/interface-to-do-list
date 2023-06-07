@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton';
+import Theme from '../Theme';
 import LogoSvg from './logo';
-import { Container, Image } from './styles';
+import { Container, ContainerTheme, Image } from './styles';
 
 type Props = {
   showBackButton: boolean;
+  mobile: boolean;
 };
 
-const Logo = ({ showBackButton }: Props) => {
+const Logo = ({ showBackButton, mobile }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -17,6 +19,11 @@ const Logo = ({ showBackButton }: Props) => {
         <LogoSvg />
         ToDo app
       </Image>
+      {mobile && (
+        <ContainerTheme>
+          <Theme />
+        </ContainerTheme>
+      )}
     </Container>
   );
 };

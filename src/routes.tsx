@@ -13,7 +13,7 @@ type Props = {
 const routes = ({ mobile }: Props) => {
   return (
     <Routes>
-      {mobile && <Route path="/" element={<Menu />} />}
+      {mobile && <Route path="/" element={<Menu mobile={mobile} />} />}
       {!mobile && <Route path="/" element={<Homepage />} />}
       <Route path="/registerTask" element={<Register mobile={mobile} />} />
       <Route path="/registerTask/:id" element={<Register mobile={mobile} />} />
