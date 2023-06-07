@@ -79,3 +79,12 @@ export function REMOVE_TASK(taskId: number) {
     },
   };
 }
+
+export function GET_COUNT_TASKS() {
+  return {
+    url: API_URL + `/countTasks`,
+    options: {
+      method: 'GET',
+    },
+  };
+}

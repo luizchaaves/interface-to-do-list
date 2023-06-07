@@ -6,6 +6,10 @@ import theme from '../../styles/theme';
 import Card from '../Card';
 import { Cards, Container, ContainerLogo } from './styles';
 import Logo from '../Logo';
+import { countTasksGet } from '../../store/coutTasks';
+import { useDispatch } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/configureStore';
+import { useAppSelector } from '../../hooks/hooks';
 
 type card = {
   id: number;
@@ -19,7 +23,11 @@ type card = {
 const Menu = () => {
   const [activeMenu, setActiveMenu] = useState<string>('');
   let { pathname } = useLocation();
-
+  const dispatch = useDispatch<AppDispatch>();
+  const { data } = useAppSelector(
+    (state: RootState) => state.coutTasks
+  ) as DefaultState;
+  const { AllTasks, FinishedTasks, OpenedTasks } = data as ResponseCountData;
   const cards: card[] = [
     {
       id: 1,
@@ -32,7 +40,7 @@ const Menu = () => {
       id: 2,
       title: 'Todos',
       icon: MdInbox,
-      quantity: 1,
+      quantity: AllTasks === undefined ? 0 : AllTasks,
       background: theme.background.cards.orange,
       route: '/allTasks',
     },
@@ -40,7 +48,7 @@ const Menu = () => {
       id: 3,
       title: 'Abertos',
       icon: MdFolderOpen,
-      quantity: 0,
+      quantity: OpenedTasks === undefined ? 0 : OpenedTasks,
       background: theme.background.cards.red,
       route: '/openedTasks',
     },
@@ -48,11 +56,15 @@ const Menu = () => {
       id: 4,
       title: 'Concluídos',
       icon: MdCheck,
-      quantity: 0,
+      quantity: FinishedTasks === undefined ? 0 : FinishedTasks,
       background: theme.background.cards.green,
       route: '/finishedTasks',
     },
   ];
+
+  useEffect(() => {
+    dispatch<any>(countTasksGet(undefined));
+  }, [dispatch]);
 
   useEffect(() => {
     if (pathname === '/') setActiveMenu('home');
@@ -60,7 +72,7 @@ const Menu = () => {
       const menuActive = pathname.split('/');
       setActiveMenu(menuActive[1].toString());
     }
-  }, [pathname, setActiveMenu]);
+  }, [pathname, setActiveMenu, dispatch]);
 
   function handleMenuClick(route: string) {
     setActiveMenu(route.replace('/', ''));

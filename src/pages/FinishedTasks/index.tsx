@@ -6,6 +6,7 @@ import { finishedTasksGet } from '../../store/finishedTasks';
 import Header from '../../components/Header';
 import { Container, Content } from './styles';
 import List from '../../components/List';
+import { countTasksGet } from '../../store/coutTasks';
 
 type Props = {
   mobile: boolean;
@@ -16,7 +17,7 @@ const FinishedTasks = ({ mobile }: Props) => {
   const { data } = useAppSelector(
     (state: RootState) => state.finishedTasks
   ) as DefaultState;
-  const { tasks } = data;
+  const { tasks } = data as ResponseData;
 
   useEffect(() => {
     dispatch<any>(finishedTasksGet(undefined));
@@ -24,6 +25,7 @@ const FinishedTasks = ({ mobile }: Props) => {
 
   function loadFinishedTasks() {
     dispatch<any>(finishedTasksGet(undefined));
+    dispatch<any>(countTasksGet(undefined));
   }
 
   return (

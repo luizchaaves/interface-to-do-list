@@ -5,7 +5,7 @@ declare global {
   }
   export interface DefaultState {
     loading: boolean;
-    data: ResponseData;
+    data: ResponseData | ResponseCountData;
     error: string;
   }
   export interface Task {
@@ -20,6 +20,12 @@ declare global {
     length?: number;
     tasks?: Task[];
     message?: string;
+  }
+
+  export interface ResponseCountData {
+    AllTasks: number;
+    OpenedTasks: number;
+    FinishedTasks: number;
   }
 }
 

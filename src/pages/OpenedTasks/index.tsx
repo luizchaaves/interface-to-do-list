@@ -6,6 +6,7 @@ import { openedTasksGet } from '../../store/openedTasks';
 import Header from '../../components/Header';
 import { Container, Content } from './styles';
 import List from '../../components/List';
+import { countTasksGet } from '../../store/coutTasks';
 
 type Props = {
   mobile: boolean;
@@ -16,7 +17,7 @@ const OpenedTasks = ({ mobile }: Props) => {
   const { data } = useAppSelector(
     (state: RootState) => state.openedTasks
   ) as DefaultState;
-  const { tasks } = data;
+  const { tasks } = data as ResponseData;
 
   useEffect(() => {
     dispatch<any>(openedTasksGet(undefined));
@@ -24,6 +25,7 @@ const OpenedTasks = ({ mobile }: Props) => {
 
   function loadOpenedTasks() {
     dispatch<any>(openedTasksGet(undefined));
+    dispatch<any>(countTasksGet(undefined));
   }
 
   return (
