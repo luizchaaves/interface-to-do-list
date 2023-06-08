@@ -1,10 +1,13 @@
 import { useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import useForm from '../../hooks/useForm';
 import { CREATE_TASK, GET_TAKS, UPDATE_TASK } from '../../services/api';
+import { AppDispatch } from '../../store/configureStore';
+import { countTasksGet } from '../../store/coutTasks';
 import { Container, ContainerButton, Content } from './styles';
 
 type Props = {
@@ -12,10 +15,11 @@ type Props = {
 };
 
 const Register = ({ mobile }: Props) => {
-  const title = useForm();
-  const description = useForm();
+  const title = useForm({ useValidate: true });
+  const description = useForm({ useValidate: false });
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const findTask = useCallback(
     async (id: string) => {
@@ -43,6 +47,7 @@ const Register = ({ mobile }: Props) => {
         description: description.value,
       });
       const response = await fetch(url, options);
+      dispatch<any>(countTasksGet(undefined));
       if (response.status === 200 && response.ok) navigate('/allTasks');
     }
   }
@@ -60,15 +65,26 @@ const Register = ({ mobile }: Props) => {
       <Header mobile={mobile} title="Cadastrar" />
       <Content>
         <form onSubmit={(e: React.ChangeEvent<HTMLFormElement>) => onSubmit(e)}>
-          <Input label="Titulo" type="text" name="title" {...title} />
+          <Input
+            label="Titulo"
+            type="text"
+            name="title"
+            required={true}
+            {...title}
+          />
           <Input
             label="Descrição"
             type="textarea"
             name="description"
+            required={true}
             {...description}
           />
           <ContainerButton>
-            <Button>{id ? 'Salvar alterações' : 'Cadastrar'}</Button>
+            {title.error || title.value.length === 0 ? (
+              <Button disabled>{id ? 'Salvar alterações' : 'Cadastrar'}</Button>
+            ) : (
+              <Button>{id ? 'Salvar alterações' : 'Cadastrar'}</Button>
+            )}
           </ContainerButton>
         </form>
       </Content>

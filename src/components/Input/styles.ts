@@ -27,6 +27,12 @@ export const InputText = styled.input`
     box-shadow: 0 0 0 3px ${(props) => props.theme.color.white},
       0 0 0 4px ${(props) => props.theme.background.primary.card};
   }
+
+  &.error {
+    outline: none;
+    box-shadow: 0 0 0 3px ${(props) => props.theme.color.white},
+      0 0 0 4px ${(props) => props.theme.background.cards.red};
+  }
 `;
 
 export const InputTextArea = styled.textarea`
@@ -48,4 +54,16 @@ export const InputTextArea = styled.textarea`
     box-shadow: 0 0 0 3px ${(props) => props.theme.color.white},
       0 0 0 4px ${(props) => props.theme.background.primary.card};
   }
+
+  &.error {
+    outline: none;
+    box-shadow: 0 0 0 3px ${(props) => props.theme.color.white},
+      0 0 0 4px ${(props) => props.theme.background.cards.red};
+  }
+`;
+
+export const Error = styled.p`
+  color: ${(props) => props.theme.background.cards.red};
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 `;

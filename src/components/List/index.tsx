@@ -93,14 +93,16 @@ const List = ({
                   <MdClose />
                 </Button>
               )}
-              <Button
-                title="Editar"
-                name="button edit"
-                color={theme.background.cards.yellow}
-                onClick={() => handleButtonEdit(task.id)}
-              >
-                <MdModeEditOutline />
-              </Button>
+              {!task.finished && (
+                <Button
+                  title="Editar"
+                  name="button edit"
+                  color={theme.background.cards.yellow}
+                  onClick={() => handleButtonEdit(task.id)}
+                >
+                  <MdModeEditOutline />
+                </Button>
+              )}
               <Button
                 title="Excluir"
                 name="button delete"

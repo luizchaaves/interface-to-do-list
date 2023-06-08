@@ -1,4 +1,4 @@
-import { Label, Wrapper, InputText, InputTextArea } from './styles';
+import { Label, Wrapper, InputText, InputTextArea, Error } from './styles';
 
 interface Props {
   label: string;
@@ -10,14 +10,29 @@ interface Props {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => void;
+  error: string | undefined;
+  validate: Function;
+  required: boolean;
 }
 
-const Input = ({ label, type, name, value, onChange }: Props) => {
+const Input = ({
+  label,
+  type,
+  name,
+  value,
+  onChange,
+  error,
+  required,
+}: Props) => {
   return (
     <Wrapper>
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name}>
+        {label}
+        {required ? '*' : ''}
+      </Label>
       {type === 'textarea' ? (
         <InputTextArea
+          className={error ? 'error' : ''}
           id={name}
           name={name}
           value={value}
@@ -25,6 +40,7 @@ const Input = ({ label, type, name, value, onChange }: Props) => {
         />
       ) : (
         <InputText
+          className={error ? 'error' : ''}
           type={type}
           id={name}
           name={name}
@@ -32,6 +48,7 @@ const Input = ({ label, type, name, value, onChange }: Props) => {
           onChange={onChange}
         />
       )}
+      {error && <Error>{error}</Error>}
     </Wrapper>
   );
 };
