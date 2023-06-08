@@ -53,7 +53,7 @@ const Register = ({ mobile }: Props) => {
       title.setValue('');
       description.setValue('');
     }
-  }, []);
+  }, [id]);
 
   return (
     <Container>

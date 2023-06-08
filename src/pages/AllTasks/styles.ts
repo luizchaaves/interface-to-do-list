@@ -7,6 +7,7 @@ export const Container = styled.div`
   color: ${(props) => props.theme.color.primary};
   height: 100vh;
   overflow: hidden;
+  position: relative;
 `;
 
 export const Content = styled.div`
