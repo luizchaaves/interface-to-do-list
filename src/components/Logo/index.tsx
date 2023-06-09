@@ -17,7 +17,7 @@ const Logo = ({ showBackButton, mobile }: Props) => {
       {showBackButton && <BackButton />}
       <Image onClick={() => navigate('/')}>
         <LogoSvg />
-        ToDo app
+        ToDo List
       </Image>
       {mobile && (
         <ContainerTheme>
