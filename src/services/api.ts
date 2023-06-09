@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost:3333';
+export const API_URL = 'https://api-to-do-list.onrender.com';
 
 export function GET_TASKS() {
   return {
