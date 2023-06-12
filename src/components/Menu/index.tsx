@@ -4,13 +4,21 @@ import { IconType } from 'react-icons';
 import { MdEditNote, MdCheck, MdFolderOpen, MdInbox } from 'react-icons/md';
 import theme from '../../styles/theme';
 import Card from '../Card';
-import { Cards, Container, ContainerLogo, ContainerTheme } from './styles';
+import {
+  Cards,
+  Container,
+  ContainerLogo,
+  ContainerTheme,
+  Links,
+} from './styles';
 import Logo from '../Logo';
 import { countTasksGet } from '../../store/coutTasks';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/configureStore';
 import { useAppSelector } from '../../hooks/hooks';
 import Theme from '../Theme';
+import Portfolio from '../Portfolio';
+import Github from '../Github';
 
 type card = {
   id: number;
@@ -96,7 +104,16 @@ const Menu = ({ mobile }: { mobile: Mobile }) => {
           />
         ))}
       </Cards>
-      <ContainerTheme>{!mobile && <Theme />}</ContainerTheme>
+      <ContainerTheme>
+        {!mobile ? (
+          <Theme />
+        ) : (
+          <Links>
+            <Portfolio showDescription={false} />
+            <Github showDescription={false} />
+          </Links>
+        )}
+      </ContainerTheme>
     </Container>
   );
 };

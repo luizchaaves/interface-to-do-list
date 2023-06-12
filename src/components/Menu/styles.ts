@@ -47,3 +47,10 @@ export const ContainerTheme = styled.div`
   bottom: 12px;
   right: 16px;
 `;
+
+export const Links = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
