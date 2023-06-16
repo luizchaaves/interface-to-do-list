@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import useForm from '../../hooks/useForm';
-import { CREATE_TASK, GET_TAKS, UPDATE_TASK } from '../../services/api';
+import { CREATE_TASK, GET_TASK, UPDATE_TASK } from '../../services/api';
 import { AppDispatch } from '../../store/configureStore';
 import { countTasksGet } from '../../store/coutTasks';
 import { Container, ContainerButton, Content } from './styles';
@@ -23,7 +23,7 @@ const Register = ({ mobile }: Props) => {
 
   const findTask = useCallback(
     async (id: string) => {
-      const { url, options } = GET_TAKS(id);
+      const { url, options } = GET_TASK(id);
       const response = await fetch(url, options);
       const json = await response.json();
       title.setValue(json.title);

@@ -5,6 +5,7 @@ import FinishedTasks from './pages/FinishedTasks';
 import Homepage from './pages/Homepage';
 import OpenedTasks from './pages/OpenedTasks';
 import Register from './pages/Register';
+import TaskDetail from './pages/TaskDetail';
 
 type Props = {
   mobile: boolean;
@@ -19,6 +20,7 @@ const routes = ({ mobile }: Props) => {
       <Route path="/registerTask/:id" element={<Register mobile={mobile} />} />
       <Route path="/allTasks" element={<AllTasks mobile={mobile} />} />
       <Route path="/openedTasks" element={<OpenedTasks mobile={mobile} />} />
+      <Route path="/task/:id" element={<TaskDetail mobile={mobile} />} />
       <Route
         path="/finishedTasks"
         element={<FinishedTasks mobile={mobile} />}

@@ -27,7 +27,7 @@ export function GET_FINISHED_TASKS() {
   };
 }
 
-export function GET_TAKS(taskId: string) {
+export function GET_TASK(taskId: string) {
   return {
     url: API_URL + `/tasks/${taskId}`,
     options: {

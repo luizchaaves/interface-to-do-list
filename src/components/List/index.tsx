@@ -39,23 +39,42 @@ const List = ({
     if (!mobile) setGroupButtonMobileActive(undefined);
   }, [mobile]);
 
-  const handleButtonMobile = (id: number) => {
+  const handleButtonMobile = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => {
+    event.stopPropagation();
     if (groupButtonMobileActive === id) setGroupButtonMobileActive(undefined);
     else setGroupButtonMobileActive(id);
   };
 
-  const handleButtonConclude = async (id: number) => {
+  const handleButtonConclude = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => {
+    event.stopPropagation();
     const { url, options } = FINISH_TASK(id);
     const response = await fetch(url, options);
     if (response.status === 200 && response.ok) loadTasks();
   };
-  const handleButtonEdit = (id: number) => {
+  const handleButtonEdit = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => {
+    event.stopPropagation();
     navigate(`/registerTask/${id}`);
   };
-  const handleButtonDelete = async (id: number) => {
+  const handleButtonDelete = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => {
+    event.stopPropagation();
     const { url, options } = REMOVE_TASK(id);
     const response = await fetch(url, options);
     if (response.status === 200 && response.ok) loadTasks();
+  };
+  const handleClickTask = async (id: number) => {
+    navigate(`/task/${id}`);
   };
 
   return (
@@ -68,6 +87,7 @@ const List = ({
               ? theme.background.cards.green
               : theme.background.cards.orange
           }
+          onClick={() => handleClickTask(task.id)}
         >
           <Text>{task.title}</Text>
           <ContainerButtons>
@@ -79,7 +99,9 @@ const List = ({
                   title="Concluir"
                   name="button conclude"
                   color={theme.background.cards.green}
-                  onClick={() => handleButtonConclude(task.id)}
+                  onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                    handleButtonConclude(event, task.id)
+                  }
                 >
                   <MdCheck />
                 </Button>
@@ -88,7 +110,9 @@ const List = ({
                   title="Não conluída"
                   name="Button not conclude"
                   color={theme.background.cards.orange}
-                  onClick={() => handleButtonConclude(task.id)}
+                  onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                    handleButtonConclude(event, task.id)
+                  }
                 >
                   <MdClose />
                 </Button>
@@ -98,7 +122,9 @@ const List = ({
                   title="Editar"
                   name="button edit"
                   color={theme.background.cards.yellow}
-                  onClick={() => handleButtonEdit(task.id)}
+                  onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                    handleButtonEdit(event, task.id)
+                  }
                 >
                   <MdModeEditOutline />
                 </Button>
@@ -107,7 +133,9 @@ const List = ({
                 title="Excluir"
                 name="button delete"
                 color={theme.background.cards.red}
-                onClick={() => handleButtonDelete(task.id)}
+                onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                  handleButtonDelete(event, task.id)
+                }
               >
                 <MdOutlineDeleteOutline />
               </Button>
@@ -115,7 +143,9 @@ const List = ({
             {mobile && (
               <Button
                 className="mobile"
-                onClick={() => handleButtonMobile(task.id)}
+                onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                  handleButtonMobile(event, task.id)
+                }
               >
                 {groupButtonMobileActive !== task.id ? (
                   <MdMenu />

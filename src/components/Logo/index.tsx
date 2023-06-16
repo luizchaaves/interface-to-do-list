@@ -7,14 +7,15 @@ import { Container, ContainerTheme, Image } from './styles';
 type Props = {
   showBackButton: boolean;
   mobile: boolean;
+  goPreviousPage?: boolean;
 };
 
-const Logo = ({ showBackButton, mobile }: Props) => {
+const Logo = ({ showBackButton, mobile, goPreviousPage }: Props) => {
   const navigate = useNavigate();
 
   return (
     <Container>
-      {showBackButton && <BackButton />}
+      {showBackButton && <BackButton goPreviousPage={goPreviousPage} />}
       <Image onClick={() => navigate('/')}>
         <LogoSvg />
         ToDo List

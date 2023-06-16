@@ -26,6 +26,7 @@ export const Row = styled.div<StyledPropsRow>`
   justify-content: space-between;
   gap: 0.5rem;
   border-left: 5px solid ${({ borderColor }) => borderColor};
+  cursor: pointer;
 `;
 
 export const Text = styled.p`
@@ -89,6 +90,7 @@ export const Button = styled.button<StyledPropsButton>`
   border: 2px solid ${({ color }) => color};
   z-index: 10;
   font-size: 1.1rem;
+  cursor: pointer;
 
   &.mobile {
     z-index: 100;

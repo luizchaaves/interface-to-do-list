@@ -1,11 +1,19 @@
 import { MdArrowBack } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Container } from './styles';
 
-const BackButton = () => {
-  const navigate = useNavigate();
+interface Props {
+  goPreviousPage?: boolean;
+}
+
+const handleClick = (goPreviousPage: boolean, navigate: NavigateFunction) => {
+  goPreviousPage ? navigate(-1) : navigate('/');
+};
+
+const BackButton = ({ goPreviousPage = false }: Props) => {
+  const navigate: NavigateFunction = useNavigate();
   return (
-    <Container onClick={() => navigate('/')}>
+    <Container onClick={() => handleClick(goPreviousPage, navigate)}>
       <MdArrowBack />
     </Container>
   );
